@@ -1,8 +1,8 @@
 {
-  "name": "template-nodejs",
+  "name": "green-tic-tac-toe",
   "version": "1.0.0",
   "description": "Template for basing repositories off",
-  "main": "src/template-nodejs.js",
+  "main": "src/green-tic-tac-toe.js",
   "scripts": {
     "build:postman": "portman --cliOptionsFile portman/portman-cli.json",
     "detect-secrets": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets-hook:latest --baseline .secrets.baseline $(git diff --staged --name-only)",
@@ -16,7 +16,7 @@
     "prepare": "husky install",
     "pre-push": "npm-run-all test test:security",
     "requirements-check": "node check_node_version.js",
-    "start": "node src/template-nodejs.js",
+    "start": "node src/green-tic-tac-toe.js",
     "start:app": "node app.js",
     "start:app:dev": "nodemon app.js",
     "start:swagger": "docker run --rm -p 3080:8080 -e SWAGGER_JSON=/definition/openapi.yml -v $(pwd)/test/mock/openapi.yaml:/definition/openapi.yaml swaggerapi/swagger-ui:latest",
@@ -31,14 +31,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.ibm.com/GOTREASA/template-nodejs.git"
+    "url": "git+https://github.ibm.com/GOTREASA/green-tic-tac-toe.git"
   },
   "author": "Gearoid O'Treasaigh",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.ibm.com/GOTREASA/template-nodejs/issues"
+    "url": "https://github.ibm.com/GOTREASA/green-tic-tac-toe/issues"
   },
-  "homepage": "https://github.ibm.com/GOTREASA/template-nodejs#readme",
+  "homepage": "https://github.ibm.com/GOTREASA/green-tic-tac-toe#readme",
   "devDependencies": {
     "@apideck/portman": "^1.0.2",
     "@commitlint/cli": "^12.1.4",

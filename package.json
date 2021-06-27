@@ -1,0 +1,93 @@
+{
+  "name": "template-nodejs",
+  "version": "1.0.0",
+  "description": "Template for basing repositories off",
+  "main": "src/template-nodejs.js",
+  "scripts": {
+    "build:postman": "portman --cliOptionsFile portman/portman-cli.json",
+    "detect-secrets": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets-hook:latest --baseline .secrets.baseline $(git diff --staged --name-only)",
+    "detect-secrets:audit": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets:latest audit .secrets.baseline",
+    "detect-secrets:exclude": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets:latest scan --update .secrets.baseline --exclude-files",
+    "detect-secrets:update-baseline": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets:latest scan --update .secrets.baseline",
+    "lint": "eslint --cache --fix",
+    "lint-staged": "lint-staged",
+    "postinstall": "npm run requirements-check",
+    "precommit": "npm-run-all lint-staged detect-secrets",
+    "prepare": "husky install",
+    "pre-push": "npm-run-all test test:security",
+    "requirements-check": "node check_node_version.js",
+    "start": "node src/template-nodejs.js",
+    "start:app": "node app.js",
+    "start:app:dev": "nodemon app.js",
+    "start:swagger": "docker run --rm -p 3080:8080 -e SWAGGER_JSON=/definition/openapi.yml -v $(pwd)/test/mock/openapi.yaml:/definition/openapi.yaml swaggerapi/swagger-ui:latest",
+    "test": "npm run test:unit",
+    "test:api": "newman run test/mock/postman_collection.json",
+    "test:api:watch": "chokidar 'src/*.js' -c 'npm run test:api'",
+    "test:security": "snyk test",
+    "test:security:dev": "snyk test --dev",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watchAll --coverage",
+    "typesync": "typesync ./package.json"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.ibm.com/GOTREASA/template-nodejs.git"
+  },
+  "author": "Gearoid O'Treasaigh",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.ibm.com/GOTREASA/template-nodejs/issues"
+  },
+  "homepage": "https://github.ibm.com/GOTREASA/template-nodejs#readme",
+  "devDependencies": {
+    "@apideck/portman": "^1.0.2",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
+    "@commitlint/travis-cli": "^12.1.4",
+    "@types/cors": "^2.8.10",
+    "@types/eslint": "^7.2.13",
+    "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/express": "^4.17.12",
+    "@types/jest": "^26.0.23",
+    "@types/newman": "^5.1.3",
+    "@types/nodemon": "^1.19.0",
+    "@types/prettier": "^2.3.0",
+    "@types/semver": "^7.3.6",
+    "chokidar-cli": "^2.1.0",
+    "detect-secrets": "^1.0.6",
+    "eslint": "^7.29.0",
+    "eslint-config-airbnb": "^18.2.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-prettier": "^3.4.0",
+    "husky": "^6.0.0",
+    "jest": "^27.0.5",
+    "lint-staged": "^11.0.0",
+    "newman": "^5.2.4",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.3.2",
+    "snyk": "^1.646.0",
+    "typesync": "^0.8.0"
+  },
+  "engines": {
+    "node": "v14.17.1"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "helmet": "^4.6.0",
+    "nodemon": "^2.0.7",
+    "semver": "^7.3.5"
+  },
+  "lint-staged": {
+    "**/*.js": [
+      "eslint --fix",
+      "git add"
+    ],
+    "package.json": [
+      "npm run typesync --silent",
+      "git add"
+    ]
+  }
+}

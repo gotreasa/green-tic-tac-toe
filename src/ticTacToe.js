@@ -70,7 +70,6 @@ game.setOrder([
   CENTRE,
   MIDDLE_LEFT,
 ]);
-// game.fillSquares();
 game.print();
 
 module.exports = {

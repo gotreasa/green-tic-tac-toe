@@ -43,17 +43,24 @@ ${this.squares[MIDDLE_LEFT]}|${this.squares[CENTRE]}|${this.squares[MIDDLE_RIGHT
 ${this.squares[BOTTOM_LEFT]}|${this.squares[BOTTOM_CENTRE]}|${this.squares[BOTTOM_RIGHT]}`;
   }
 
-  print() {
-    if (this.index === 0) {
-      this.output = `Game Board Creation…
+  getGameCreationOutput() {
+    return `Game Board Creation…
 ${this.getGrid()}
 Board Created.
 The game will start with player X`;
-      console.log(this.output);
-      return this.output;
-    }
-    this.output = `Player O:
+  }
+
+  getMoveOutput() {
+    return `Player O:
 ${this.getGrid()}`;
+  }
+
+  print() {
+    if (this.index === 0) {
+      this.output = this.getGameCreationOutput();
+    } else {
+      this.output = this.getMoveOutput();
+    }
     console.log(this.output);
     return this.output;
   }

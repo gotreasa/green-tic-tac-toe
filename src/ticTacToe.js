@@ -44,13 +44,16 @@ ${this.squares[BOTTOM_LEFT]}|${this.squares[BOTTOM_CENTRE]}|${this.squares[BOTTO
   }
 
   print() {
-    this.output = `Game Board Creation…
+    if (this.index === 0) {
+      this.output = `Game Board Creation…
 ${this.getGrid()}
 Board Created.
 The game will start with player X`;
-    // for (let i = 0; i < 0; i += 1) {
-
-    // }
+      console.log(this.output);
+      return this.output;
+    }
+    this.output = `Player O:
+${this.getGrid()}`;
     console.log(this.output);
     return this.output;
   }

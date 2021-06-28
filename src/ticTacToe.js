@@ -56,13 +56,15 @@ The game will start with player X`;
 ${this.getGrid()}`;
   }
 
-  print() {
+  print(logToConsole = true) {
     if (this.index === 0) {
       this.output = this.getGameCreationOutput();
     } else {
       this.output = this.getMoveOutput();
     }
-    console.log(this.output);
+    if (logToConsole) {
+      console.log(this.output);
+    }
     return this.output;
   }
 
@@ -82,29 +84,26 @@ ${this.getGrid()}`;
 
   play(input = '') {
     let output = input;
-    output += `\n${this.print()}`;
+    output += `\n${this.print(false)}`;
     output += '\n';
     output += this.getOutcome();
     this.move();
     if (this.index < 9) {
       return this.play(output);
     }
+    console.log(output);
     return output;
   }
 }
 const game = new Game();
 game.setOrder([
-  BOTTOM_RIGHT,
-  BOTTOM_CENTRE,
-  MIDDLE_RIGHT,
   BOTTOM_LEFT,
-  TOP_LEFT,
-  TOP_CENTRE,
-  TOP_RIGHT,
   CENTRE,
+  TOP_LEFT,
+  BOTTOM_RIGHT,
   MIDDLE_LEFT,
 ]);
-game.print();
+game.play();
 
 module.exports = {
   Game,

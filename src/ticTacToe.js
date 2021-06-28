@@ -19,6 +19,7 @@ const hasDuplicate = (input) => input.some(
 class Game {
   constructor() {
     this.squares = new Array(9).fill(' ');
+    this.index = 0;
   }
 
   setOrder(order) {
@@ -28,11 +29,10 @@ class Game {
     this.order = order;
   }
 
-  fillSquares() {
-    this.order.forEach((value, index) => {
-      this.squares[value] = index % 2 === 0 ? 'X' : 'O';
-    });
-    return this.squares;
+  move() {
+    const squareIndex = this.order[this.index];
+    this.squares[squareIndex] = this.index % 2 === 0 ? 'X' : 'O';
+    this.index += 1;
   }
 
   getGrid() {

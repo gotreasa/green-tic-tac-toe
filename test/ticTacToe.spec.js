@@ -42,7 +42,7 @@ describe('The game is played on a grid that is 3 squares by 3 squares', () => {
   });
 });
 describe('The order of the squares filled is predetermined', () => {
-  test('the order can be passed in', () => {
+  test('should match the order passed in', () => {
     const game = new Game();
     game.setOrder([
       BOTTOM_RIGHT,
@@ -67,7 +67,7 @@ describe('The order of the squares filled is predetermined', () => {
       MIDDLE_LEFT,
     ]);
   });
-  test('the Xs and Os are filled in according to the order', () => {
+  test('should match two moves of Xs and Os according to their order', () => {
     const game = new Game();
     game.setOrder([
       BOTTOM_RIGHT,
@@ -80,8 +80,9 @@ describe('The order of the squares filled is predetermined', () => {
       CENTRE,
       MIDDLE_LEFT,
     ]);
-    game.fillSquares();
-    expect(game.squares).toEqual(['X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'X']);
+    game.move();
+    game.move();
+    expect(game.squares).toEqual([' ', ' ', ' ', ' ', ' ', ' ', ' ', 'O', 'X']);
   });
   test('should throw error if the order has repeated elements', () => {
     const game = new Game();

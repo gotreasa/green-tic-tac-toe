@@ -1,5 +1,7 @@
 const { Game } = require('../src/ticTacToe');
-const { INITIAL_GRID, FULL_GRID, EMPTY_GRID } = require('./fixtures/scenarios');
+const {
+  INITIAL_GRID, FULL_GRID, EMPTY_GRID, SECOND_MOVE,
+} = require('./fixtures/scenarios');
 const {
   TOP_LEFT,
   TOP_CENTRE,
@@ -97,5 +99,25 @@ describe('The order of the squares filled is predetermined', () => {
       CENTRE,
       MIDDLE_LEFT,
     ])).toThrow(Error('Err'));
+  });
+});
+
+describe('Name of the group', () => {
+  test('should print two moves of Xs and Os according to their order', () => {
+    const game = new Game();
+    game.setOrder([
+      BOTTOM_RIGHT,
+      BOTTOM_CENTRE,
+      MIDDLE_RIGHT,
+      BOTTOM_LEFT,
+      TOP_LEFT,
+      TOP_CENTRE,
+      TOP_RIGHT,
+      CENTRE,
+      MIDDLE_LEFT,
+    ]);
+    game.move();
+    game.move();
+    expect(game.print()).toEqual(SECOND_MOVE);
   });
 });

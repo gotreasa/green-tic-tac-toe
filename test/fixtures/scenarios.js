@@ -82,8 +82,17 @@ X|O|X
 X|O|X
 -+-+-
 O|O|X`;
+
+const SECOND_MOVE = `Player O:
+ | | 
+-+-+-
+ | | 
+-+-+-
+ |O|X`;
+
 module.exports = {
   EMPTY_GRID,
   FULL_GRID,
   INITIAL_GRID,
+  SECOND_MOVE,
 };

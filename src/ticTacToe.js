@@ -1,3 +1,15 @@
+const {
+  TOP_LEFT,
+  TOP_CENTRE,
+  TOP_RIGHT,
+  MIDDLE_LEFT,
+  CENTRE,
+  MIDDLE_RIGHT,
+  BOTTOM_LEFT,
+  BOTTOM_CENTRE,
+  BOTTOM_RIGHT,
+} = require('./constants');
+
 class Game {
   constructor() {
     this.squares = new Array(9).fill(' ');
@@ -15,11 +27,11 @@ class Game {
   }
 
   getGrid() {
-    return `${this.squares[0]}|${this.squares[1]}|${this.squares[2]}
+    return `${this.squares[TOP_LEFT]}|${this.squares[TOP_CENTRE]}|${this.squares[TOP_RIGHT]}
 -+-+-
-${this.squares[3]}|${this.squares[4]}|${this.squares[5]}
+${this.squares[MIDDLE_LEFT]}|${this.squares[CENTRE]}|${this.squares[MIDDLE_RIGHT]}
 -+-+-
-${this.squares[6]}|${this.squares[7]}|${this.squares[8]}`;
+${this.squares[BOTTOM_LEFT]}|${this.squares[BOTTOM_CENTRE]}|${this.squares[BOTTOM_RIGHT]}`;
   }
 
   print() {
@@ -35,7 +47,17 @@ The game will start with player X`;
   }
 }
 const game = new Game();
-game.setOrder([8, 7, 5, 6, 0, 1, 2, 4, 3]);
+game.setOrder([
+  BOTTOM_RIGHT,
+  BOTTOM_CENTRE,
+  MIDDLE_RIGHT,
+  BOTTOM_LEFT,
+  TOP_LEFT,
+  TOP_CENTRE,
+  TOP_RIGHT,
+  CENTRE,
+  MIDDLE_LEFT,
+]);
 // game.fillSquares();
 game.print();
 

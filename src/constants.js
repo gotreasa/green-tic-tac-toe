@@ -1,0 +1,21 @@
+const TOP_LEFT = 0;
+const TOP_CENTRE = 1;
+const TOP_RIGHT = 2;
+const MIDDLE_LEFT = 3;
+const CENTRE = 4;
+const MIDDLE_RIGHT = 5;
+const BOTTOM_LEFT = 6;
+const BOTTOM_CENTRE = 7;
+const BOTTOM_RIGHT = 8;
+
+module.exports = {
+  TOP_LEFT,
+  TOP_CENTRE,
+  TOP_RIGHT,
+  MIDDLE_LEFT,
+  CENTRE,
+  MIDDLE_RIGHT,
+  BOTTOM_LEFT,
+  BOTTOM_CENTRE,
+  BOTTOM_RIGHT,
+};

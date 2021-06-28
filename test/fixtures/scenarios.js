@@ -19,7 +19,8 @@ const SECOND_MOVE = `Player O:
 -+-+-
  |O|X`;
 
-const X_VERTICAL_WIN = `Game Board Creation…
+const X_VERTICAL_WIN = `
+Game Board Creation…
  | | 
 -+-+-
  | | 
@@ -63,8 +64,7 @@ X|O|
 -+-+-
 X| |O
 
-PLAYER X WON!
-`;
+PLAYER X WON!`;
 
 module.exports = {
   EMPTY_GRID,

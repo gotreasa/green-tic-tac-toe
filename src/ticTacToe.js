@@ -10,6 +10,7 @@ const {
   BOTTOM_RIGHT,
 } = require('./constants');
 
+const getPlayer = (input) => (input % 2 === 0 ? 'X' : 'O');
 const hasDuplicate = (input) => input.some(
   (element, currentIndex) => input.some(
     (item, index) => (currentIndex !== index ? element === item : false),
@@ -31,7 +32,7 @@ class Game {
 
   move() {
     const squareIndex = this.order[this.index];
-    this.squares[squareIndex] = this.index % 2 === 0 ? 'X' : 'O';
+    this.squares[squareIndex] = getPlayer(this.index);
     this.index += 1;
   }
 
@@ -51,7 +52,7 @@ The game will start with player X`;
   }
 
   getMoveOutput() {
-    return `Player O:
+    return `Player ${getPlayer(this.index - 1)}:
 ${this.getGrid()}`;
   }
 
@@ -63,6 +64,32 @@ ${this.getGrid()}`;
     }
     console.log(this.output);
     return this.output;
+  }
+
+  hasVerticalLine() {
+    return [this.squares[MIDDLE_LEFT], this.squares[BOTTOM_LEFT]].every(
+      (element) => ((this.squares[TOP_LEFT] !== ' ') ? element === this.squares[TOP_LEFT] : false),
+    );
+  }
+
+  getOutcome() {
+    if (this.hasVerticalLine()) {
+      this.index = 9;
+      return `\nPLAYER ${getPlayer(this.index - 1)} WON!`;
+    }
+    return '';
+  }
+
+  play(input = '') {
+    let output = input;
+    output += `\n${this.print()}`;
+    output += '\n';
+    output += this.getOutcome();
+    this.move();
+    if (this.index < 9) {
+      return this.play(output);
+    }
+    return output;
   }
 }
 const game = new Game();

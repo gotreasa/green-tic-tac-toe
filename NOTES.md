@@ -43,9 +43,18 @@ THEN he wins
 
 ## Pomodoro 3
 
-- refactor the print function into parts
-- create a function to get player
+- ✅refactor the print function into parts
+- ✅create a function to get player
 - should declare X a winner if X in TOP_LEFT, MIDDLE_LEFT, and BOTTOM_LEFT
+
+## Pomodo 4  
+
+- ✅should declare X a winner if X in TOP_LEFT, MIDDLE_LEFT, and BOTTOM_LEFT
+- update the class to execute the game
+- create Docker file to run programme
+- Update Travis to build the Docker file
+- Update Travis to run the programme
+- Work on scenario 3 - the draw
 
 Scenario 2: Player O won with a horizontal line!  
 Player O:  

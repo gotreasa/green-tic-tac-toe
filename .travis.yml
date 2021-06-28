@@ -1,4 +1,6 @@
 language: node_js
+services:
+  - docker
 addons:
   sonarcloud:
     organization: "gotreasa" # the key of the org you chose at step #3
@@ -24,6 +26,9 @@ jobs:
     name: Run commit lint
     script:
       - commitlint-travis
+  - name: Create Docker standalone image
+    script:
+      - docker build -t green-tic-tac-toe-standalone -f Dockerfile-standalone .
   - stage: Test
     script:
       - npm test
@@ -31,6 +36,9 @@ jobs:
   - stage: Monitor
     script:
       snyk monitor
+  - stage: Deploy
+    script:
+      npm run start
 env:
   global:
     # SYNK TOKEN

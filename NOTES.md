@@ -28,8 +28,9 @@ X|O|
 X| |O  
 PLAYER X WON!  
 
-- should print an empty grid at the start of the game  
-- should have an empty grid at the start
+- ✅should print an empty grid at the start of the game  
+- ✅should have an empty grid at the start
+- should throw error if the order has repeated elements  
 - should print two moves  
 - should declare X a winner if X in TOP_LEFT, MIDDLE_LEFT, and BOTTOM_LEFT
 

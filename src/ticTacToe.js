@@ -10,12 +10,21 @@ const {
   BOTTOM_RIGHT,
 } = require('./constants');
 
+const hasDuplicate = (input) => input.some(
+  (element, currentIndex) => input.some(
+    (item, index) => (currentIndex !== index ? element === item : false),
+  ),
+);
+
 class Game {
   constructor() {
     this.squares = new Array(9).fill(' ');
   }
 
   setOrder(order) {
+    if (hasDuplicate(order)) {
+      throw Error('Err');
+    }
     this.order = order;
   }
 

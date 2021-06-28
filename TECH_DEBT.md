@@ -14,10 +14,10 @@ BOTTOM_LEFT=6     BOTTOM_CENTRE=7   BOTTOM_RIGHT=8
 
 ## Pomodoro 1  
 
-- Move tests and fixtures into the test folder and rename the spec file  
-- Skip the failing test  
-- Create a file for the constants in source
-- Use the constants in the tests
-- Use the constants in the implementation
+- ✅Move tests and fixtures into the test folder and rename the spec file  
+- ✅Skip the failing test  
+- ✅Create a file for the constants in source
+- ✅Use the constants in the tests
+- ✅Use the constants in the implementation
 - change the implementation to fill one square at a time
 

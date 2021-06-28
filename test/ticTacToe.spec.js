@@ -83,4 +83,18 @@ describe('The order of the squares filled is predetermined', () => {
     game.fillSquares();
     expect(game.squares).toEqual(['X', 'O', 'X', 'X', 'O', 'X', 'O', 'O', 'X']);
   });
+  test('should throw error if the order has repeated elements', () => {
+    const game = new Game();
+    expect(() => game.setOrder([
+      BOTTOM_RIGHT,
+      BOTTOM_CENTRE,
+      BOTTOM_CENTRE,
+      BOTTOM_LEFT,
+      TOP_LEFT,
+      TOP_CENTRE,
+      TOP_RIGHT,
+      CENTRE,
+      MIDDLE_LEFT,
+    ])).toThrow(Error('Err'));
+  });
 });

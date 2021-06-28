@@ -1,6 +1,6 @@
 const { Game } = require('../src/ticTacToe');
 const {
-  INITIAL_GRID, FULL_GRID, EMPTY_GRID, SECOND_MOVE,
+  INITIAL_GRID, EMPTY_GRID, SECOND_MOVE, X_VERTICAL_WIN,
 } = require('./fixtures/scenarios');
 const {
   TOP_LEFT,
@@ -24,23 +24,6 @@ describe('The game is played on a grid that is 3 squares by 3 squares', () => {
     const game = new Game();
     const emptyGrid = game.getGrid();
     expect(emptyGrid).toEqual(EMPTY_GRID);
-  });
-  test.skip('the grid is printed after every round', () => {
-    const game = new Game();
-    game.setOrder([
-      BOTTOM_RIGHT,
-      BOTTOM_CENTRE,
-      MIDDLE_RIGHT,
-      BOTTOM_LEFT,
-      TOP_LEFT,
-      TOP_CENTRE,
-      TOP_RIGHT,
-      CENTRE,
-      MIDDLE_LEFT,
-    ]);
-    game.fillSquares();
-    const result = game.print();
-    expect(result).toEqual(FULL_GRID);
   });
 });
 describe('The order of the squares filled is predetermined', () => {
@@ -102,7 +85,7 @@ describe('The order of the squares filled is predetermined', () => {
   });
 });
 
-describe('Name of the group', () => {
+describe('Scenario 1: Player X Won with vertical line!', () => {
   test('should print two moves of Xs and Os according to their order', () => {
     const game = new Game();
     game.setOrder([
@@ -119,5 +102,16 @@ describe('Name of the group', () => {
     game.move();
     game.move();
     expect(game.print()).toEqual(SECOND_MOVE);
+  });
+  test('should declare X a winner if X in TOP_LEFT, MIDDLE_LEFT, and BOTTOM_LEFT', () => {
+    const game = new Game();
+    game.setOrder([
+      BOTTOM_LEFT,
+      CENTRE,
+      TOP_LEFT,
+      BOTTOM_RIGHT,
+      MIDDLE_LEFT,
+    ]);
+    expect(game.play()).toEqual(X_VERTICAL_WIN);
   });
 });

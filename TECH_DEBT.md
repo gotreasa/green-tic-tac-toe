@@ -19,5 +19,6 @@ BOTTOM_LEFT=6     BOTTOM_CENTRE=7   BOTTOM_RIGHT=8
 - ✅Create a file for the constants in source
 - ✅Use the constants in the tests
 - ✅Use the constants in the implementation
-- change the implementation to fill one square at a time
-
+- ✅change the implementation to fill one square at a time
+- ✅remove commented out code
+- ✅update notes to use BDD

@@ -111,6 +111,10 @@ THEN it receives the result of player X winning with a vertical line
 
 ## API Pomodoro 2
 
-- should get initial move with player set to blank
-- should get a move with player set to X and grid with X placed
+- ✅should get initial move with player set to blank
+- ✅should get a move with player set to O and grid with X and O placed
+- should return a winning vertical line for player X
+
+## API Pomodoro 3
+
 - should return a winning vertical line for player X

@@ -45,9 +45,9 @@ describe('API Scenario 1: Player 1 wins with a vertical line', () => {
   });
 
   test('should return a winning vertical line for player X', () => {
-    expect(newGame()).toBe({
+    expect(newGame()).toStrictEqual({
       result: 'X',
-      moves: [(
+      moves: [
         {
           player: ' ',
           grid: {
@@ -131,8 +131,8 @@ describe('API Scenario 1: Player 1 wins with a vertical line', () => {
             bottomCentre: ' ',
             bottomRight: 'O',
           },
-        }
-      )],
+        },
+      ],
     });
   });
 });

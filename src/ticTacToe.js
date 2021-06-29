@@ -125,4 +125,5 @@ game.play();
 
 module.exports = {
   Game,
+  getPlayer,
 };

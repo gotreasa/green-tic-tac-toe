@@ -1,7 +1,18 @@
 const {
   BOTTOM_LEFT, CENTRE, TOP_LEFT, BOTTOM_RIGHT, MIDDLE_LEFT,
 } = require('./constants');
-const { Game } = require('./ticTacToe');
+const { Game, getPlayer } = require('./ticTacToe');
+
+const play = (game, input) => {
+  const output = input;
+  game.move();
+  output.moves.push(game.getMove());
+  if (game.hasVerticalLine()) {
+    output.result = getPlayer(game.index - 1);
+    return output;
+  }
+  return play(game, output);
+};
 
 const newGame = () => {
   const game = new Game();
@@ -17,17 +28,7 @@ const newGame = () => {
       game.getMove(),
     ],
   };
-  /**
-   * let output = input;
-    output += `\n${this.print()}`;
-    output += '\n';
-    output += this.getOutcome();
-    this.move();
-    if (this.index < 9) {
-      return this.play(output);
-    }
-    return output;
-   */
+  play(game, result);
   return result;
 };
 

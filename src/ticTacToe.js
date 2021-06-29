@@ -56,14 +56,11 @@ The game will start with player X`;
 ${this.getGrid()}`;
   }
 
-  print(logToConsole = true) {
+  print() {
     if (this.index === 0) {
       this.output = this.getGameCreationOutput();
     } else {
       this.output = this.getMoveOutput();
-    }
-    if (logToConsole) {
-      console.log(this.output);
     }
     return this.output;
   }
@@ -84,14 +81,13 @@ ${this.getGrid()}`;
 
   play(input = '') {
     let output = input;
-    output += `\n${this.print(false)}`;
+    output += `\n${this.print()}`;
     output += '\n';
     output += this.getOutcome();
     this.move();
     if (this.index < 9) {
       return this.play(output);
     }
-    console.log(output);
     return output;
   }
 }

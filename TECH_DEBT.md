@@ -25,4 +25,5 @@ BOTTOM_LEFT=6     BOTTOM_CENTRE=7   BOTTOM_RIGHT=8
 
 ## Part 2
 
-- Remove the redundant variable for logging
+- ✅Remove the redundant variable for logging
+- ✅Update the API Path

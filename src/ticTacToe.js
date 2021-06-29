@@ -36,6 +36,23 @@ class Game {
     this.index += 1;
   }
 
+  getMove() {
+    return {
+      player: ' ',
+      grid: {
+        topLeft: this.squares[TOP_LEFT],
+        topCentre: this.squares[TOP_CENTRE],
+        topRight: this.squares[TOP_RIGHT],
+        middleLeft: this.squares[MIDDLE_LEFT],
+        middleCentre: this.squares[CENTRE],
+        middleRight: this.squares[MIDDLE_RIGHT],
+        bottomLeft: this.squares[BOTTOM_LEFT],
+        bottomCentre: this.squares[BOTTOM_CENTRE],
+        bottomRight: this.squares[BOTTOM_RIGHT],
+      },
+    };
+  }
+
   getGrid() {
     return `${this.squares[TOP_LEFT]}|${this.squares[TOP_CENTRE]}|${this.squares[TOP_RIGHT]}
 -+-+-

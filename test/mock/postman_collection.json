@@ -67,7 +67,7 @@
               "// Validate response body",
               "pm.test(\"[GET]::/newGame - Response body matches expected\", function () {",
               "    const jsonData = pm.response.json();",
-              "    pm.expect(jsonData.value).to.eql({",
+              "    pm.expect(jsonData).to.eql({",
               "        result: 'X',",
               "        moves: [",
               "            {",

@@ -1,20 +1,20 @@
 {
   "_": {
-    "postman_id": "cc601ee2-0066-438c-955d-a80eadac3dc0"
+    "postman_id": "44574cc7-7c6d-4f17-ab67-ed9bb61040d5"
   },
   "item": [
     {
-      "id": "453f607f-ab53-4837-9bfb-461d35d25d20",
-      "name": "Returns a list of users.",
+      "id": "921634b8-d947-48ba-b679-f1636ae3c0be",
+      "name": "Returns the moves performed in a gam.",
       "request": {
-        "name": "Returns a list of users.",
+        "name": "Returns the moves performed in a gam.",
         "description": {
-          "content": "List of users on the system.",
+          "content": "List of moves performed by each of the BOT users.",
           "type": "text/plain"
         },
         "url": {
           "path": [
-            "dummy"
+            "newGame"
           ],
           "host": [
             "{{baseUrl}}"
@@ -29,12 +29,12 @@
           "_": {
             "postman_previewlanguage": "json"
           },
-          "id": "761dbb33-a4d0-4e0a-80d3-80f58e35931b",
+          "id": "ba73b1f4-ae38-451d-a67a-badcf777b4d8",
           "name": "OK",
           "originalRequest": {
             "url": {
               "path": [
-                "dummy"
+                "newGame"
               ],
               "host": [
                 "{{baseUrl}}"
@@ -53,7 +53,7 @@
               "value": "application/json"
             }
           ],
-          "body": "{}",
+          "body": "{\n \"result\": \"O\",\n \"moves\": [\n  {\n   \"player\": \"X\",\n   \"grid\": {\n    \"topLeft\": \" \",\n    \"topCentre\": \"O\",\n    \"topRight\": \"O\",\n    \"middleLeft\": \"X\",\n    \"middleCentre\": \" \",\n    \"middleRight\": \" \",\n    \"bottomLeft\": \"X\",\n    \"bottomCentre\": \"X\",\n    \"bottomRight\": \"X\"\n   }\n  },\n  {\n   \"player\": \"X\",\n   \"grid\": {\n    \"topLeft\": \"O\",\n    \"topCentre\": \" \",\n    \"topRight\": \"O\",\n    \"middleLeft\": \" \",\n    \"middleCentre\": \"X\",\n    \"middleRight\": \" \",\n    \"bottomLeft\": \"X\",\n    \"bottomCentre\": \"X\",\n    \"bottomRight\": \"O\"\n   }\n  }\n ]\n}",
           "cookie": []
         }
       ],
@@ -61,10 +61,102 @@
         {
           "listen": "test",
           "script": {
-            "id": "f3b54144-2de3-4b46-b3d1-e3d1a6061cdc",
+            "id": "e2e168c7-5a23-46ca-a884-4d54c8455d5f",
             "type": "text/javascript",
             "exec": [
-              "// Validate response status code \npm.test(\"[GET]::/dummy - Response status code is 200\", function () {\n    pm.expect(pm.response.code).to.equal(200);\n});\n"
+              "// Validate response body",
+              "pm.test(\"[GET]::/newGame - Response body matches expected\", function () {",
+              "    const jsonData = pm.response.json();",
+              "    pm.expect(jsonData.value).to.eql({",
+              "        result: 'X',",
+              "        moves: [",
+              "            {",
+              "                'player': ' ',",
+              "                'grid': {",
+              "                    'topLeft': ' ',",
+              "                    'topCentre': ' ',",
+              "                    'topRight': ' ',",
+              "                    'middleLeft': ' ',",
+              "                    'middleCentre': ' ',",
+              "                    'middleRight': ' ',",
+              "                    'bottomLeft': ' ',",
+              "                    'bottomCentre': ' ',",
+              "                    'bottomRight': ' '",
+              "                }",
+              "            },",
+              "            {",
+              "                'player': 'X',",
+              "                'grid': {",
+              "                    'topLeft': ' ',",
+              "                    'topCentre': ' ',",
+              "                    'topRight': ' ',",
+              "                    'middleLeft': ' ',",
+              "                    'middleCentre': ' ',",
+              "                    'middleRight': ' ',",
+              "                    'bottomLeft': 'X',",
+              "                    'bottomCentre': ' ',",
+              "                    'bottomRight': ' '",
+              "                }",
+              "            },",
+              "            {",
+              "                'player': 'O',",
+              "                'grid': {",
+              "                    'topLeft': ' ',",
+              "                    'topCentre': ' ',",
+              "                    'topRight': ' ',",
+              "                    'middleLeft': ' ',",
+              "                    'middleCentre': 'O',",
+              "                    'middleRight': ' ',",
+              "                    'bottomLeft': 'X',",
+              "                    'bottomCentre': ' ',",
+              "                    'bottomRight': ' '",
+              "                }",
+              "            },",
+              "            {",
+              "                'player': 'X',",
+              "                'grid': {",
+              "                    'topLeft': 'X',",
+              "                    'topCentre': ' ',",
+              "                    'topRight': ' ',",
+              "                    'middleLeft': ' ',",
+              "                    'middleCentre': 'O',",
+              "                    'middleRight': ' ',",
+              "                    'bottomLeft': 'X',",
+              "                    'bottomCentre': ' ',",
+              "                    'bottomRight': ' '",
+              "                }",
+              "            },",
+              "            {",
+              "                'player': 'O',",
+              "                'grid': {",
+              "                    'topLeft': 'X',",
+              "                    'topCentre': ' ',",
+              "                    'topRight': ' ',",
+              "                    'middleLeft': ' ',",
+              "                    'middleCentre': 'O',",
+              "                    'middleRight': ' ',",
+              "                    'bottomLeft': 'X',",
+              "                    'bottomCentre': ' ',",
+              "                    'bottomRight': 'O'",
+              "                }",
+              "            },",
+              "            {",
+              "                'player': 'X',",
+              "                'grid': {",
+              "                    'topLeft': 'X',",
+              "                    'topCentre': ' ',",
+              "                    'topRight': ' ',",
+              "                    'middleLeft': 'X',",
+              "                    'middleCentre': 'O',",
+              "                    'middleRight': ' ',",
+              "                    'bottomLeft': 'X',",
+              "                    'bottomCentre': ' ',",
+              "                    'bottomRight': 'O'",
+              "                }",
+              "            }",
+              "        ]",
+              "    });",
+              "});"
             ]
           }
         }
@@ -75,16 +167,16 @@
   "variable": [
     {
       "type": "string",
-      "value": "http://localhost:9080/api/v1",
+      "value": "http://localhost:9080/api/TicTacToe",
       "key": "baseUrl"
     }
   ],
   "info": {
-    "_postman_id": "cc601ee2-0066-438c-955d-a80eadac3dc0",
-    "name": "Template NodeJS & Express API",
+    "_postman_id": "44574cc7-7c6d-4f17-ab67-ed9bb61040d5",
+    "name": "TicTacToe API",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "description": {
-      "content": "Template NodeJS & Express API for testing.",
+      "content": "API for web implemenation of the TicTacToe game.",
       "type": "text/plain"
     }
   }

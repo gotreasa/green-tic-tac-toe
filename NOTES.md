@@ -86,3 +86,28 @@ WHEN they don't form any lines
 THEN they draw  
 
 - should declare a draw when neither player has won and there are no more moves left
+
+# Part 2
+
+## Desc
+
+As a game portal developer, I want to get a TicTacToe game played between two BOTs, so that I can
+spike around how to use the JSON game to create a web TicTacToe version of it.
+
+## UAT
+
+GIVEN a TicTacToe API,
+WHEN a new game is requested via /api/TicTacToe/newGame,
+THEN is provided to the requester a JSON with a game played in BOT mode.
+
+## Pomodoro 1:
+
+Scenario 1: Player 1 wins with a vertical line
+GIVEN a system
+WHEN it calls the newGame API
+THEN it receives the result of player X winning with a vertical line
+
+- should populate the player on each move
+- should populate the moves
+- should output the move on new Game
+- should return a winning vertical line for player X

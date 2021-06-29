@@ -1,16 +1,16 @@
 openapi: "3.0.3"
 info:
-  title: Template NodeJS & Express API
-  description: Template NodeJS & Express API for testing.
+  title: TicTacToe API
+  description: API for web implemenation of the TicTacToe game.
   version: 1.0.0
 servers: 
-  - url: http://localhost:9080/api/v1
-  - url: https://template-nodejs-app.wdc1a.ciocloud.nonprod.intranet.ibm.com/api/v1
+  - url: http://localhost:9080/api/TicTacToe
+  - url: https://template-nodejs-app.wdc1a.ciocloud.nonprod.intranet.ibm.com/api/TicTacToe
 paths:
-  /dummy:
+  /newGame:
     get:
-      summary: Returns a list of users.
-      description: List of users on the system.
+      summary: Returns the moves performed in a gam.
+      description: List of moves performed by each of the BOT users.
       responses:
         200:
           description: OK
@@ -18,3 +18,53 @@ paths:
             application/json:
               schema:
                 type: object
+                properties:
+                  result:
+                    description: Overall result of the game.
+                    type: string
+                    enum:
+                      - draw
+                      - X
+                      - O
+                  moves:
+                    description: List of moves made by the palyers
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        player:
+                          type: string
+                          enum:
+                           - " "
+                           - X
+                           - O
+                        grid:
+                          type: object
+                          properties:
+                            topLeft:
+                              $ref: '#/components/schemas/square'
+                            topCentre:
+                              $ref: '#/components/schemas/square'
+                            topRight:
+                              $ref: '#/components/schemas/square'
+                            middleLeft:
+                              $ref: '#/components/schemas/square'
+                            middleCentre:
+                              $ref: '#/components/schemas/square'
+                            middleRight:
+                              $ref: '#/components/schemas/square'
+                            bottomLeft:
+                              $ref: '#/components/schemas/square'
+                            bottomCentre:
+                              $ref: '#/components/schemas/square'
+                            bottomRight:
+                              $ref: '#/components/schemas/square'
+components:
+  schemas:
+    square:
+      type: string
+      enum:
+       - " "
+       - X
+       - O
+

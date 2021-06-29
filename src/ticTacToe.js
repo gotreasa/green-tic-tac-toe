@@ -10,7 +10,12 @@ const {
   BOTTOM_RIGHT,
 } = require('./constants');
 
-const getPlayer = (input) => (input % 2 === 0 ? 'X' : 'O');
+const getPlayer = (input) => {
+  if (input < 0) {
+    return ' ';
+  }
+  return input % 2 === 0 ? 'X' : 'O';
+};
 const hasDuplicate = (input) => input.some(
   (element, currentIndex) => input.some(
     (item, index) => (currentIndex !== index ? element === item : false),
@@ -38,7 +43,7 @@ class Game {
 
   getMove() {
     return {
-      player: ' ',
+      player: getPlayer(this.index - 1),
       grid: {
         topLeft: this.squares[TOP_LEFT],
         topCentre: this.squares[TOP_CENTRE],

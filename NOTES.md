@@ -100,14 +100,17 @@ GIVEN a TicTacToe API,
 WHEN a new game is requested via /api/TicTacToe/newGame,
 THEN is provided to the requester a JSON with a game played in BOT mode.
 
-## Pomodoro 1:
+## API Pomodoro 1
 
-Scenario 1: Player 1 wins with a vertical line
+API Scenario 1: Player 1 wins with a vertical line
 GIVEN a system
 WHEN it calls the newGame API
 THEN it receives the result of player X winning with a vertical line
 
-- should populate the player on each move
-- should populate the moves
-- should output the move on new Game
+- ✅should get initial move with empty grid
+
+## API Pomodoro 2
+
+- should get initial move with player set to blank
+- should get a move with player set to X and grid with X placed
 - should return a winning vertical line for player X

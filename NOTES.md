@@ -117,4 +117,4 @@ THEN it receives the result of player X winning with a vertical line
 
 ## API Pomodoro 3
 
-- should return a winning vertical line for player X
+- ✅should return a winning vertical line for player X

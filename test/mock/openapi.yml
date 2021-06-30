@@ -5,7 +5,7 @@ info:
   version: 1.0.0
 servers: 
   - url: http://localhost:9080/api/TicTacToe
-  - url: https://template-nodejs-app.wdc1a.ciocloud.nonprod.intranet.ibm.com/api/TicTacToe
+  - url: https://green-tic-tac-toe-app.wdc1a.ciocloud.nonprod.intranet.ibm.com/api/TicTacToe
 paths:
   /newGame:
     get:

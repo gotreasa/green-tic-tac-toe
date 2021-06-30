@@ -4,5 +4,5 @@
 
 # green-tic-tac-toe
 
-API: https://green-tic-tac-toe-app.wdc1a.ciocloud.nonprod.intranet.ibm.com/api/TicTacToe/newGame
+API: https://green-tic-tac-toe-app.wdc1a.ciocloud.nonprod.intranet.ibm.com/api/TicTacToe/newGame  
 Swagger: https://green-tic-tac-toe-swagger-ui.wdc1a.ciocloud.nonprod.intranet.ibm.com/  

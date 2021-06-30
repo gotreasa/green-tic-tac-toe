@@ -110,6 +110,7 @@ ${this.getGrid()}`;
     if (this.index < 9) {
       return this.play(output);
     }
+    console.log(output);
     return output;
   }
 }

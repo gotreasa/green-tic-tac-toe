@@ -5,10 +5,10 @@
   "main": "src/green-tic-tac-toe.js",
   "scripts": {
     "build:postman": "portman --cliOptionsFile portman/portman-cli.json",
-    "detect-secrets": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets-hook:latest --baseline .secrets.baseline $(git diff --staged --name-only)",
-    "detect-secrets:audit": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets:latest audit .secrets.baseline",
-    "detect-secrets:exclude": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets:latest scan --update .secrets.baseline --exclude-files",
-    "detect-secrets:update-baseline": "docker run --rm -v $(pwd):/code txo-toolbox-team-docker-local.artifactory.swg-devops.com/git-defenders/detect-secrets:latest scan --update .secrets.baseline",
+    "detect-secrets": "cross-env-shell docker run --platform linux/amd64 --rm -v ${INIT_CWD}:/code icr.io/git-defenders/detect-secrets-hook:0.13.1.ibm.56.dss --baseline .secrets.baseline",
+    "detect-secrets:audit": "cross-env-shell docker run -it --platform linux/amd64 --rm -v ${INIT_CWD}:/code icr.io/git-defenders/detect-secrets:0.13.1.ibm.56.dss audit --report --fail-on-unaudited --fail-on-live --fail-on-audited-real .secrets.baseline",
+    "detect-secrets:exclude": "cross-env-shell docker run --platform linux/amd64 --rm -v ${INIT_CWD}:/code icr.io/git-defenders/detect-secrets:0.13.1.ibm.56.dss scan --update .secrets.baseline --exclude-files",
+    "detect-secrets:update-baseline": "cross-env-shell docker run --platform linux/amd64 --rm -v ${INIT_CWD}:/code icr.io/git-defenders/detect-secrets:0.13.1.ibm.56.dss scan --update .secrets.baseline",
     "lint": "eslint --cache --fix",
     "lint-staged": "lint-staged",
     "postinstall": "npm run requirements-check",
@@ -46,14 +46,17 @@
     "@commitlint/travis-cli": "^16.1.0",
     "@types/cors": "^2.8.12",
     "@types/eslint": "^8.4.1",
+    "@types/eslint-config-prettier": "^6.11.0",
     "@types/eslint-plugin-prettier": "^3.1.0",
     "@types/express": "^4.17.13",
     "@types/jest": "^27.4.0",
+    "@types/lint-staged": "^13.2.0",
     "@types/newman": "^5.3.0",
     "@types/nodemon": "^1.19.1",
     "@types/prettier": "^2.4.4",
     "@types/semver": "^7.3.9",
     "chokidar-cli": "^3.0.0",
+    "cross-env": "^7.0.3",
     "detect-secrets": "^1.0.6",
     "eslint": "^8.9.0",
     "eslint-config-airbnb": "^19.0.4",
@@ -68,10 +71,10 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.5.1",
     "snyk": "^1.852.0",
-    "typesync": "^0.8.0"
+    "typesync": "^0.11.1"
   },
   "engines": {
-    "node": "v14.17.1"
+    "node": "v18.15.0"
   },
   "dependencies": {
     "cors": "^2.8.5",
